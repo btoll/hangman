@@ -32,7 +32,7 @@ def scaffold_base():
     print("   |                                     |")
 
 
-def head():
+def _head():
     print("\n\tLET'S PLAY HANGMAN!")
     print("")
     print("   ------------------------")
@@ -45,7 +45,7 @@ def head():
     print("   |                      |")
 
 
-def torso():
+def _torso():
     print("   |                      |")
     print("   |                      |")
     print("   |                      |")
@@ -53,7 +53,7 @@ def torso():
     print("   |                      |")
 
 
-def one_arm():
+def _one_arm():
     print("   |                      |")
     print("   |                   \  |")
     print("   |                    \ |")
@@ -61,7 +61,7 @@ def one_arm():
     print("   |                      |")
 
 
-def two_arms():
+def _two_arms():
     print("   |                      |")
     print("   |                   \  |  /")
     print("   |                    \ | /")
@@ -69,7 +69,7 @@ def two_arms():
     print("   |                      |")
 
 
-def one_leg():
+def _one_leg():
     print("   |                      |")
     print("   |                      |")
     print("   |                     /")
@@ -77,7 +77,7 @@ def one_leg():
     print("   |                   /")
 
 
-def two_legs():
+def _two_legs():
     print("   |                      |")
     print("   |                      |")
     print("   |                     / \\")
@@ -85,7 +85,7 @@ def two_legs():
     print("   |                   /     \\")
 
 
-def spacer():
+def _spacer():
     print("   |")
     print("   |")
     print("   |")
@@ -94,24 +94,41 @@ def spacer():
 
 
 hanging_man = (
-    [head, spacer, spacer, scaffold_base],
-    [head, torso, spacer, scaffold_base],
-    [head, one_arm, spacer, scaffold_base],
-    [head, two_arms, spacer, scaffold_base],
-    [head, two_arms, one_leg, scaffold_base],
-    [head, two_arms, two_legs, scaffold_base]
+    [_head, _spacer, _spacer, scaffold_base],
+    [_head, _torso, _spacer, scaffold_base],
+    [_head, _one_arm, _spacer, scaffold_base],
+    [_head, _two_arms, _spacer, scaffold_base],
+    [_head, _two_arms, _one_leg, scaffold_base],
+    [_head, _two_arms, _two_legs, scaffold_base]
 )
 
 
 def draw(index):
+    """
+    Draws the scaffold and the current state of the hanging man.
+
+    :param index: The index into the `hanging_man` tuple.
+    :type index: int
+    """
+
     for piece in hanging_man[index]:
         piece()
 
 
 def draw_all():
+    """
+    Draws the entire scaffold and the whole hanging man.
+
+    """
+
     draw(len(hanging_man) - 1)
 
 
 def start():
+    """
+    Draws a new scaffold, minus any piece of the hanging man.
+
+    """
+
     scaffold_top_and_middle()
     scaffold_base()

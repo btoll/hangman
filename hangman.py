@@ -14,7 +14,12 @@ game = {
 
 
 def usage():
-    str = '''
+    """
+    Prints the usage string
+
+    """
+
+    str = """
         USAGE:
 
             python3 hangman.py [--guesses=10]
@@ -24,11 +29,18 @@ def usage():
         HINT:
 
             Press Ctl-D to start over at any time.
-    '''
+    """
     print(textwrap.dedent(str))
 
 
 def guess(guesses):
+    """
+    Calls itself after every guess.
+
+    :param guesses: Initially is 0 and is incremented every call.
+    :type guesses: int
+    """
+
     try:
         letter = input("Pick a letter: ")
 
@@ -94,6 +106,11 @@ def guess(guesses):
 
 
 def init_game():
+    """
+    Starts a new game.  Mixes in session data to the global `game` dict.
+
+    """
+
     os.system("clear")
 
     word = random.choice(game.get("words"))
@@ -114,6 +131,11 @@ def init_game():
 
 
 def play_again():
+    """
+    Re-initiates another game.
+
+    """
+
     resp = input("\nPlay again? [Y|n]: ")
     if resp not in ("N", "n"):
         init_game()
@@ -122,6 +144,13 @@ def play_again():
 
 
 def main(argv):
+    """
+    Entrypoint.
+
+    :param argv: Argument vector.
+    :type argv: list
+    """
+
     try:
         opts, args = getopt.getopt(argv, "hg:", ["help", "guesses="])
     except getopt.GetoptError:
