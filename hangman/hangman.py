@@ -5,7 +5,7 @@ import sys
 import textwrap
 
 
-import art
+import hangman.art as art
 
 
 game = {
@@ -143,16 +143,14 @@ def play_again():
         print("Goodbye.")
 
 
-def main(argv):
+def main():
     """
     Entrypoint.
 
-    :param argv: Argument vector.
-    :type argv: list
     """
 
     try:
-        opts, args = getopt.getopt(argv, "hg:", ["help", "guesses="])
+        opts, args = getopt.getopt(sys.argv[1:], "hg:", ["help", "guesses="])
     except getopt.GetoptError:
         print("Error: Unrecognized flag.")
         usage()
@@ -179,7 +177,3 @@ def main(argv):
         # Control-C or Control-D sent a SIGINT to the process, handle it.
         print("\nGame aborted!")
         sys.exit(1)
-
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
