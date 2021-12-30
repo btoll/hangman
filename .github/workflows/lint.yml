@@ -1,0 +1,19 @@
+name: pycodestyle
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Lint
+        uses: docker://btoll/pycodestyle:latest
+        with:
+          args: /github/workspace
+
