@@ -44,7 +44,8 @@ def guess(guesses):
     try:
         letter = input("Pick a letter: ")
 
-        # Always clear the screen. The code below will determine what needs drawn.
+        # Always clear the screen.
+        # The code below will determine what needs drawn.
         os.system("clear")
 
         game["guessed_letters"] += letter
@@ -59,8 +60,10 @@ def guess(guesses):
                 if item == letter:
                     blanks[index] = letter
 
-            # Draw the hanging man (since the guesses counter hasn't increased it will be the same as last time).
-            # Note only draw him if the guesses counter has been incremented due to a bad guess.
+            # Draw the hanging man (since the guesses counter
+            # hasn't increased it will be the same as last time).
+            # Note only draw him if the guesses counter has been
+            # incremented due to a bad guess.
             if guesses == 0:
                 pass
             if guesses < 6:
@@ -81,7 +84,8 @@ def guess(guesses):
             guesses += 1
 
             if guesses < 6:
-                # Always draw the hanging man, regardless of the total number of guesses.
+                # Always draw the hanging man,
+                # regardless of the total number of guesses.
                 art.draw(guesses - 1)
                 print("\nThe word does not contain the letter " + letter + ".")
                 print("Previous guesses = " + game.get("guessed_letters"))
